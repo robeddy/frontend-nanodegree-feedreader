@@ -33,8 +33,8 @@ $(function() {
          */
         it('has url defined and url is not empty', function() {
             allFeeds.forEach(function(feed) {
-                expect(feed['url']).toBeDefined();
-                expect(feed['url'].length).not.toBe(0);
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
             });
 
         });
@@ -54,8 +54,8 @@ $(function() {
          */
         it('has name defined and name is not empty', function() {
             allFeeds.forEach(function(feed) {
-                expect(feed['name']).toBeDefined();
-                expect(feed['name'].length).not.toBe(0);
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
             });
 
         });
@@ -90,7 +90,7 @@ $(function() {
             $menuIcon.trigger('click');
             $hiddenClass = $('body').hasClass('menu-hidden');            
             //console.log('after first click',$hiddenClass);
-            expect($hiddenClass).not.toBeTruthy();
+            expect($hiddenClass).toBeFalsy();
             //console.log('before second click',$hiddenClass);
             $menuIcon.trigger('click');
             $hiddenClass = $('body').hasClass('menu-hidden');            
@@ -114,9 +114,9 @@ $(function() {
             loadFeed(0, done);
         });
       
-        it('has at least a single entry in the feed container', function(done) {
-            expect($('.entry h2')[0]).toBeDefined();
-            done();
+        it('has at least a single entry in the feed container', function() {
+            //console.log($('.feed .entry'));
+            expect($('.feed .entry')[0]).toBeDefined();
         });
     });
 

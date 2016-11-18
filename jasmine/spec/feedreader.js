@@ -112,25 +112,25 @@ $(function() {
         var html1 = '';
         var html2 = '';
 
-        console.log('here we go');
         beforeEach(function(done){
             $('.feed').empty()
     
             loadFeed(0, function() {
+                //console.log('inside call 0');
                 html1 = $('.feed').find("h2").text();
+                loadFeed(1, function() {
+                    //console.log('inside call 1');
+                    html2 = $('.feed').find("h2").text();
+                    done();
+                });
             });
-    
-            loadFeed(1, function() {
-                html2 = $('.feed').find("h2").text();
-                done();
-            });
+                
         });
     
-        it('changes the content', function(done){
-            console.log('html1',html1);
-            console.log('html2',html2);            
+        it('changes the content', function(){
+            //console.log('html1',html1);
+            //console.log('html2',html2);            
             expect(html1).not.toEqual(html2)
-            done();
         });
             
 
